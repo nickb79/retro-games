@@ -1,0 +1,14 @@
+{
+  "name": "Lantern Heir",
+  "short_name": "Lantern Heir",
+  "description": "A top-down turn-based journey across Duskreach.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#120e0a",
+  "theme_color": "#1a140c",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}
