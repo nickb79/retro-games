@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#1a140c">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Lantern Heir">
+  <title>Lantern Heir</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="icon-192.png">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: #120e0a;
+      color: #f4e6c8;
+      overflow: hidden;
+      touch-action: none;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+      overscroll-behavior: none;
+      font-family: ui-monospace, "Courier New", monospace;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      height: 100dvh;
+    }
+    #bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 8px;
+      background: #1a140c;
+      flex: 0 0 auto;
+    }
+    #bar b { letter-spacing: 1px; font-size: 13px; }
+    #bar span { color: #a89880; font-size: 12px; flex: 1; }
+    #bar button, #controls button {
+      font: inherit;
+      color: #f4e6c8;
+      background: #2a2218;
+      border: 2px solid #6a5030;
+      border-radius: 8px;
+      touch-action: none;
+    }
+    #bar button { min-width: 40px; min-height: 36px; }
+    #stage {
+      flex: 1 1 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 0;
+    }
+    canvas {
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+      background: #000;
+      touch-action: none;
+    }
+    #controls {
+      flex: 0 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 18px 14px;
+      gap: 12px;
+    }
+    #dpad {
+      display: grid;
+      grid-template-columns: 54px 54px 54px;
+      grid-template-rows: 54px 54px 54px;
+    }
+    #dpad button, #ab button {
+      width: 54px;
+      height: 54px;
+      font-size: 18px;
+    }
+    #dpad button:nth-child(1) { grid-column: 2; grid-row: 1; }
+    #dpad button:nth-child(2) { grid-column: 1; grid-row: 2; }
+    #dpad button:nth-child(3) { grid-column: 3; grid-row: 2; }
+    #dpad button:nth-child(4) { grid-column: 2; grid-row: 3; }
+    #ab { display: flex; gap: 12px; align-items: center; }
+    #btn-a { background: #6a3018; }
+    #btn-b { background: #243018; }
+    @media (orientation: landscape) {
+      body { flex-direction: row; }
+      #bar { flex-direction: column; writing-mode: horizontal-tb; }
+      #controls { flex-direction: column; justify-content: center; padding: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="bar">
+    <b>LANTERN HEIR</b>
+    <span id="speedtag">1×</span>
+    <button id="btn-mute" type="button" aria-label="Mute">♪</button>
+    <button id="btn-fs" type="button" aria-label="Fullscreen">⛶</button>
+  </div>
+  <div id="stage"><canvas id="c" width="192" height="224"></canvas></div>
+  <div id="controls">
+    <div id="dpad">
+      <button type="button" data-k="up" aria-label="Up">▲</button>
+      <button type="button" data-k="left" aria-label="Left">◀</button>
+      <button type="button" data-k="right" aria-label="Right">▶</button>
+      <button type="button" data-k="down" aria-label="Down">▼</button>
+    </div>
+    <div id="ab">
+      <button id="btn-b" type="button" aria-label="B">B</button>
+      <button id="btn-a" type="button" aria-label="A">A</button>
+    </div>
+  </div>
+  <script src="js/data.js"></script>
+  <script src="js/world.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/sprites.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
